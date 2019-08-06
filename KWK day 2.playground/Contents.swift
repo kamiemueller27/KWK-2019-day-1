@@ -133,3 +133,5 @@ friends["Maya"] = nil
 
 print(friends.keys)
 
+//steps to git: git add ., git commit -m "message", git push
+
