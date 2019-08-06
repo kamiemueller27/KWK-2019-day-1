@@ -126,12 +126,14 @@ var str = "Hello, playground"
 // nil means nonexistent
 
 //--------------practice: dictionaries------------------------
-
-var friends = ["Sasha" : "1", "Alice" : "2", "Annabeth" : "3", "Maya" : "4"]
-
-friends["Maya"] = nil
-
-print(friends.keys)
+//
+//var friends = ["Sasha" : "1", "Alice" : "2", "Annabeth" : "3", "Maya" : "4"]
+//
+//friends["Maya"] = nil
+//
+//print(friends.keys)
 
 //steps to git: git add ., git commit -m "message", git push
+
+
 
