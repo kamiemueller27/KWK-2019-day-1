@@ -15,7 +15,7 @@ class TableViewController: UITableViewController {
 
 //        self.clearsSelectionOnViewWillAppear = false
 //        self.navigationItem.rightBarButtonItem = self.editButtonItem
-        toDos = createToDos()
+//        toDos = createToDos()
         
     }
 
@@ -50,14 +50,16 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
         let toDo = toDos[indexPath.row]
         
-        if toDo.important {
-            cell.textLabel?.text = "❗️" + toDo.name
-        } else {
-            cell.textLabel?.text = toDo.name
+        if let name = toDo.name {
+            if toDo.important {
+                cell.textLabel?.text = "❗️" + name
+            } else {
+                cell.textLabel?.text = toDo.name
+            }
         }
-
         return cell
     }
     
@@ -80,6 +82,10 @@ class TableViewController: UITableViewController {
         let toDo = toDos[indexPath.row]
         
         performSegue(withIdentifier: "moveToComplete", sender: toDo)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        createToDos()
     }
 
 
