@@ -15,15 +15,25 @@ class AddPhotoViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var textField: UITextField!
     
 var imagePicker = UIImagePickerController()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
 
     }
     
-    func imagePickerController() {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        //do something with the photo I took/picked out
+        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as?UIImage {
+            
+            imageView.image = selectedImage
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
         
+
     }
+    
     
 
     /*
@@ -44,10 +54,28 @@ var imagePicker = UIImagePickerController()
         present(imagePicker, animated: true, completion: nil)
     }
     
-    
+
     @IBAction func photoLibraryButton(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func savePhotoTapped(_ sender: Any) {
+        
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            
+            let photoToSave = Photos(entity: Photos.entity(), insertInto: context)
+            photoToSave.caption = textField.text
+            
+            if let userImage = imageView.image {
+                if let userImageData = userImage.pngData() {
+                    photoToSave.photo = userImageData
+                }
+            }
+        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+            navigationController?.popViewController(animated: true)
+        }
     }
     
 }

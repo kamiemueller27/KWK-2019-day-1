@@ -13,7 +13,7 @@
         <!--ViewFinder-->
         <scene sceneID="VSt-dL-YvF">
             <objects>
-                <tableViewController title="ViewFinder" id="o2Y-cq-IaS" sceneMemberID="viewController">
+                <tableViewController title="ViewFinder" id="o2Y-cq-IaS" customClass="TableViewController" customModule="viewFinderApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AAv-4F-szJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,6 +88,7 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveButton:" destination="Xhu-ka-t6N" eventType="touchUpInside" id="NFX-mc-bIK"/>
+                                    <action selector="savePhotoTapped:" destination="Xhu-ka-t6N" eventType="touchUpInside" id="hkY-7a-arg"/>
                                 </connections>
                             </button>
                         </subviews>
